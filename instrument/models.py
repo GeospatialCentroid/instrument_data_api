@@ -17,7 +17,7 @@ class Units(models.Model):
 class InstrumentMeasurement(models.Model):
     instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
-    alias = models.IntegerField(default=0)
+    alias = models.CharField(max_length=200)
     units = models.ForeignKey(Units, on_delete=models.CASCADE)
 
 

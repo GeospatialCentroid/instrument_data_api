@@ -14,3 +14,10 @@ class InstrumentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Instrument, InstrumentAdmin)
+
+# Hide units from main admin page
+class UnitsAdmin(admin.ModelAdmin):
+  def has_module_permission(self, request):
+    return False
+
+admin.site.register(Units,UnitsAdmin)
