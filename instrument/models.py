@@ -5,9 +5,11 @@ from django.db import models
 class Instrument(models.Model):
     name = models.CharField(max_length=200)
     data_folder = models.CharField(max_length=200)
+    configuration_file = models.CharField(max_length=400, blank=True, null=True)
     alias = models.CharField(max_length=200)
     start_date = models.DateTimeField("Start Data")
     end_date = models.DateTimeField("End Data")
+
 
 
 class Units(models.Model):
@@ -19,6 +21,13 @@ class InstrumentMeasurement(models.Model):
     name = models.CharField(max_length=200)
     alias = models.CharField(max_length=200)
     units = models.ForeignKey(Units, on_delete=models.CASCADE)
+
+
+class MeasurementCalibration(models.Model):
+    instrument_measurement = models.ForeignKey(InstrumentMeasurement, on_delete=models.CASCADE)
+    slope = models.FloatField(max_length=200,default=1)
+    offset = models.FloatField(max_length=200,default=0)
+    start_date = models.DateTimeField("Start Data")
 
 
 class InstrumentFile(models.Model):
