@@ -23,6 +23,8 @@ class InstrumentMeasurement(models.Model):
     name = models.CharField(max_length=200)
     alias = models.CharField(max_length=200)
     units = models.ForeignKey(Units, on_delete=models.CASCADE)
+    min = models.FloatField(default=0)
+    max = models.FloatField(default=0, null=True)
 
 
 class MeasurementCalibration(models.Model):
