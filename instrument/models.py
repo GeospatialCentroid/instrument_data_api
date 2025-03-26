@@ -7,8 +7,8 @@ class Instrument(models.Model):
     data_folder = models.CharField(max_length=200)
     configuration_file = models.CharField(max_length=400, blank=True, null=True)
     alias = models.CharField(max_length=200)
-    start_date = models.DateTimeField("Start Data")
-    end_date = models.DateTimeField("End Data")
+    start_date = models.DateTimeField("Start Data", null=True)
+    end_date = models.DateTimeField("End Data", null=True)
 
     def __repr__(self):
         return f"Instrument(name='{self.name}', data_folder={self.data_folder}, configuration_file={self.configuration_file}, alias={self.alias}), start_date={self.start_date}. end_date={self.end_date})"

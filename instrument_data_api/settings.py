@@ -77,9 +77,9 @@ WSGI_APPLICATION = 'instrument_data_api.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'spuraqi',
-        'USER': 'spuradmin',
-        'PASSWORD': 'cumulonimbus#42',
+        'NAME': 'instrument_manager',
+        'USER': 'kevin',
+        'PASSWORD': '',
         'HOST': '127.0.0.1',
         'PORT': '5432',  # Default PostgreSQL port
     }

@@ -21,4 +21,4 @@ class Command(BaseCommand):
                 #instrument.end_date = yaml_data['instrument_name'],
             )
             print(repr(instrument))
-        #instrument.save()
+        instrument.save()
