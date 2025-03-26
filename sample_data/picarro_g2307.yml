@@ -1,0 +1,11 @@
+baudrate: 19200
+comport: /dev/ttyS5
+data_folder: data
+header: unixtime,CavityPressure,CavityTemp,DasTemp,EtalonTemp,WarmBoxTemp,species,MPVPosition,OutletValve,solenoid_valves,H2CO,H2CO_30s,H2CO_2min,H2CO_5min,H2O,CH4,ymd,hms,utc_datetime,warm
+instrument_filename: 'picarro_g2307'
+instrument_folder: 'picarro_g2307'
+instrument_name: 'picarro_g2307'
+interval: 20
+sample_line: 1737134810.63   100.0007    45.0005    35.3125    44.9047    45.0002    55.0000     0.0000
+  33904.1105     0.0000    -0.2498     1.1178     1.1529     1.1824     0.3216     2.0076     0.0000     0.0000
+warm_up_seconds: 600

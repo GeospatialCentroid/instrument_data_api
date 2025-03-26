@@ -1,0 +1,11 @@
+baudrate: 57600
+comport: /dev/ttyS0
+data_folder: data
+header: time,date,flags,no,no2,rctt,pmtv,intt,pres,smplf,ozonf,utc_datetime,warm
+instrument_filename: 'thermo_42itl'
+instrument_folder: 'thermo_42itl'
+instrument_name: 'thermo_42itl'
+interval: 20
+sample_line: 11:01:08 01-17-2025 CC000000 no 4.791 no2 3.677 rctt 50.140 pmtv -1135.900
+  intt 28.741 pres 261.863 smplf 0.898 ozonf 0.050
+warm_up_seconds: 600

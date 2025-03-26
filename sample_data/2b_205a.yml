@@ -1,0 +1,10 @@
+baudrate: 2400
+comport: /dev/ttyS11
+data_folder: data
+header: ozone,temperature,pressure,flow,date,time,utc_datetime,warm
+instrument_filename: 2b_205a 
+instrument_folder:  2b_205a
+instrument_name: 2b_205a
+interval: 20
+sample_line: 0.0,24.0,824.9,1826,13/01/25,11:08:19
+warm_up_seconds: 600

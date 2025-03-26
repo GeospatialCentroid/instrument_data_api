@@ -10,6 +10,8 @@ class Instrument(models.Model):
     start_date = models.DateTimeField("Start Data")
     end_date = models.DateTimeField("End Data")
 
+    def __repr__(self):
+        return f"Instrument(name='{self.name}', data_folder={self.data_folder}, configuration_file={self.configuration_file}, alias={self.alias}), start_date={self.start_date}. end_date={self.end_date})"
 
 
 class Units(models.Model):

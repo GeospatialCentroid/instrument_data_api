@@ -1,0 +1,10 @@
+baudrate: 9600
+comport: /dev/ttyUSB0
+data_folder: data
+header: col1,col2,col3,col4,col5,col6,col7,col8,col9,col10,utc_datetime,warm
+instrument_filename: 'bme280'
+instrument_folder: 'bme280'
+instrument_name: 'bme280'
+interval: 20
+sample_line: -999,840.62310,27.88000,13.65137,-2.43981,-999,-999,-999,0.55288,0.13746
+warm_up_seconds: 600
