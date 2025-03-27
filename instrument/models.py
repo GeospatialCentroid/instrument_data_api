@@ -9,6 +9,7 @@ class Instrument(models.Model):
     alias = models.CharField(max_length=200)
     start_date = models.DateTimeField("Start Data", null=True)
     end_date = models.DateTimeField("End Data", null=True)
+    description = models.TextField(max_length=600, null=True)
 
     def __repr__(self):
         return f"Instrument(name='{self.name}', data_folder={self.data_folder}, configuration_file={self.configuration_file}, alias={self.alias}), start_date={self.start_date}. end_date={self.end_date})"
@@ -25,6 +26,7 @@ class InstrumentMeasurement(models.Model):
     units = models.ForeignKey(Units, on_delete=models.CASCADE)
     min = models.FloatField(default=0)
     max = models.FloatField(default=0, null=True)
+    description = models.TextField(max_length=600, null=True)
 
 
 class MeasurementCalibration(models.Model):
