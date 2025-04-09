@@ -1,7 +1,15 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Instrument, InstrumentMeasurement,Units
+from .models import Instrument, InstrumentMeasurement,Units,Station
+
+
+
+class StationAdmin(admin.ModelAdmin):
+    model = Station
+
+admin.site.register(Station, StationAdmin)
+
 
 class InstrumentMeasurementInline(admin.StackedInline):
     model = InstrumentMeasurement

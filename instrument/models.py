@@ -1,7 +1,15 @@
 from django.db import models
 
 
-# Create your models here.
+class Station(models.Model):
+    name = models.CharField(max_length=200)
+    lat = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
+    lng = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True)
+    description = models.TextField(max_length=600, null=True)
+
+    def __str__(self):
+        return self.name
+
 class Instrument(models.Model):
     name = models.CharField(max_length=200)
     data_folder = models.CharField(max_length=200)
@@ -10,6 +18,7 @@ class Instrument(models.Model):
     start_date = models.DateTimeField("Start Data", null=True)
     end_date = models.DateTimeField("End Data", null=True)
     description = models.TextField(max_length=600, null=True)
+    station = models.ForeignKey(Station, on_delete=models.CASCADE, related_name="station", null=True)
 
     def __str__(self):
         return self.name
@@ -20,7 +29,7 @@ class Instrument(models.Model):
 
 class Units(models.Model):
     name = models.CharField(max_length=100)
-
+    alias = models.CharField(max_length=100, null=True)
     def __str__(self):
         return self.name
 
