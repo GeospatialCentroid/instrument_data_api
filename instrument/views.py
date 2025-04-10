@@ -1,12 +1,12 @@
 from django.shortcuts import render
 
 from rest_framework import viewsets
-from .models import Instrument
-from .serializers import InstrumentSerializer
+from .models import Station
+from .serializers import StationSerializer
 
 
-class InstrumentViewSet(viewsets.ModelViewSet):
-    queryset = Instrument.objects.all()
-    serializer_class = InstrumentSerializer
+class StationViewSet(viewsets.ModelViewSet):
+    queryset = Station.objects.all()
+    serializer_class = StationSerializer
 
 

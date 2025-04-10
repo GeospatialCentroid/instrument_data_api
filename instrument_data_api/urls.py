@@ -18,12 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework import routers
-from instrument.views import InstrumentViewSet
+from instrument.views import StationViewSet
 from django.urls import path, include
 
 # Serializers define the API representation.
 router = routers.DefaultRouter()
-router.register(r'instruments', InstrumentViewSet)
+router.register(r'stations', StationViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

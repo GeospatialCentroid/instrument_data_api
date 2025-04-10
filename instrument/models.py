@@ -18,7 +18,7 @@ class Instrument(models.Model):
     start_date = models.DateTimeField("Start Data", null=True)
     end_date = models.DateTimeField("End Data", null=True)
     description = models.TextField(max_length=600, null=True)
-    station = models.ForeignKey(Station, on_delete=models.CASCADE, related_name="station", null=True)
+    station = models.ForeignKey(Station, on_delete=models.CASCADE, related_name="instruments", null=True)
 
     def __str__(self):
         return self.name
