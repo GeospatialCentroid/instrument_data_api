@@ -38,7 +38,7 @@ class InstrumentMeasurement(models.Model):
     instrument = models.ForeignKey(Instrument, on_delete=models.CASCADE, related_name="measurements")
     name = models.CharField(max_length=200)
     alias = models.CharField(max_length=200)
-    units = models.ForeignKey(Units, on_delete=models.CASCADE)
+    units = models.ForeignKey(Units, on_delete=models.CASCADE, null=True)
     min = models.FloatField(default=0)
     max = models.FloatField(default=0, null=True)
     description = models.TextField(max_length=600, null=True)
