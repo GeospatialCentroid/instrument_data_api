@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from instrument.views import FileFieldFormView
+
 
 from rest_framework import routers
 from instrument.views import StationViewSet
@@ -28,4 +30,5 @@ router.register(r'stations', StationViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
+    path("instrument_upload", FileFieldFormView.as_view()),
 ]

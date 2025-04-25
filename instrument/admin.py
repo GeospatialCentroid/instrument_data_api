@@ -1,6 +1,7 @@
 from django.contrib import admin
+from django.core.management import call_command
+from django.contrib import messages
 
-# Register your models here.
 from .models import Instrument, Measurement,Units,Station
 
 
@@ -13,11 +14,11 @@ admin.site.register(Station, StationAdmin)
 
 class MeasurementInline(admin.StackedInline):
     model = Measurement
-    extra = 3
+    extra = 0
+
 
 
 class InstrumentAdmin(admin.ModelAdmin):
-
     inlines = [MeasurementInline]
 
 
@@ -29,3 +30,7 @@ class UnitsAdmin(admin.ModelAdmin):
     return False
 
 admin.site.register(Units,UnitsAdmin)
+
+
+
+

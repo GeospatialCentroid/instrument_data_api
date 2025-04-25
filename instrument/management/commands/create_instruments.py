@@ -6,19 +6,26 @@ class Command(BaseCommand):
     help = "Add an instrument. Call python manage.py create_instruments -s 1 -p /Users/kevin/projects/instrument_data_api/sample_data/thermo_42itl.yml"
 
     def add_arguments(self, parser):
-        parser.add_argument("-p", nargs="+", type=str)
-        parser.add_argument("-s", nargs="+", type=str)
+        parser.add_argument("-p", type=str)
+        parser.add_argument("-s", type=str)
 
     def handle(self, *args, **options):
-        instrument_path = options['p'][0]
-        instrument_station = options['s'][0]
+        instrument_file = options['p']
+        instrument_station = options['s']
         station = Station.objects.get(id=instrument_station)
-        with open(instrument_path, 'r') as f:
-            yaml_data = yaml.safe_load(f)
+
+        try:
+            f = open(instrument_file, 'r')
+        except Exception as e:
+            f = instrument_file.read()
+
+
+        yaml_data = yaml.safe_load(f)
+        try:
             instrument = Instrument(
                 name=yaml_data.get('instrument_name'),
                 data_folder=yaml_data.get('instrument_folder'),
-                configuration_file=instrument_path,
+                configuration_file=instrument_file,
                 station=station,
                 #instrument.alias = yaml_data['instrument_name'],
                 #instrument.start_date = yaml_data['instrument_name'],
@@ -36,4 +43,5 @@ class Command(BaseCommand):
                         name=c,
                     )
                     im.save()
-
+        except Exception as e:
+            print("***error", e)

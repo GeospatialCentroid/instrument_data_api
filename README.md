@@ -37,3 +37,12 @@ python manage.py createsuperuser
 ```python manage.py runserver```
    
 2. Navigate to http://127.0.0.1:8000/admin and enter the superuser details
+
+## to add a new instrument
+
+While logged-in, navigate to http://127.0.0.1:8000/instrument_upload
+And upload the new instrument config files (ending with '.yml'.
+
+This can also be called from the commandline using
+``python manage.py create_instruments -p '{file to instrument file} -s 1'``
+
