@@ -40,7 +40,7 @@ python manage.py createsuperuser
 
 ## to add a new instrument
 
-While logged-in, navigate to http://127.0.0.1:8000/instrument_upload
+While logged-in, navigate to http://127.0.0.0:8000/instrument_upload
 And upload the new instrument config files (ending with '.yml'.
 
 This can also be called from the commandline using
