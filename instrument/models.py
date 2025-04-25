@@ -10,7 +10,7 @@ class Station(models.Model):
         return self.name
 
 class Instrument(models.Model):
-    name = models.CharField(max_length=200,primary_key=True)
+    name = models.CharField(max_length=200, unique=True)
     data_folder = models.CharField(max_length=200)
     configuration_file = models.CharField(max_length=400, blank=True, null=True)
     alias = models.CharField(max_length=200, null=True)
