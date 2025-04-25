@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand, CommandError
-from instrument.models import Instrument,InstrumentMeasurement,Station
+from instrument.models import Instrument,Measurement,Station
 import yaml
 
 class Command(BaseCommand):
@@ -17,7 +17,7 @@ class Command(BaseCommand):
             yaml_data = yaml.safe_load(f)
             instrument = Instrument(
                 name=yaml_data.get('instrument_name'),
-                data_folder=yaml_data.get('data_folder'),
+                data_folder=yaml_data.get('instrument_folder'),
                 configuration_file=instrument_path,
                 station=station,
                 #instrument.alias = yaml_data['instrument_name'],
@@ -28,11 +28,12 @@ class Command(BaseCommand):
             print(repr(instrument))
             ## create the measures
             cols=yaml_data.get('header').split(",")
-            print(cols)
+            exclude=['time','date','utc_datetime']
             for c in cols:
-                im = InstrumentMeasurement(
-                    instrument=instrument,
-                    name=c,
-                )
-                im.save()
+                if c not in exclude:
+                    im = Measurement(
+                        instrument=instrument,
+                        name=c,
+                    )
+                    im.save()
 

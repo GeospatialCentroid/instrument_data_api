@@ -1,16 +1,16 @@
 from rest_framework import serializers
-from .models import Station, Instrument, InstrumentMeasurement
+from .models import Station, Instrument, Measurement
 
 
-class InstrumentMeasurementSerializer(serializers.ModelSerializer):
+class MeasurementSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = InstrumentMeasurement
+        model = Measurement
 
         fields = ('id', 'name','alias','units','min','max','description')
 
 class InstrumentSerializer(serializers.ModelSerializer):
-    measurements = InstrumentMeasurementSerializer(many=True)
+    measurements = MeasurementSerializer(many=True)
 
     class Meta:
         model = Instrument

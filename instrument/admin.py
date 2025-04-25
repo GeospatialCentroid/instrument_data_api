@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Instrument, InstrumentMeasurement,Units,Station
+from .models import Instrument, Measurement,Units,Station
 
 
 
@@ -11,14 +11,14 @@ class StationAdmin(admin.ModelAdmin):
 admin.site.register(Station, StationAdmin)
 
 
-class InstrumentMeasurementInline(admin.StackedInline):
-    model = InstrumentMeasurement
+class MeasurementInline(admin.StackedInline):
+    model = Measurement
     extra = 3
 
 
 class InstrumentAdmin(admin.ModelAdmin):
 
-    inlines = [InstrumentMeasurementInline]
+    inlines = [MeasurementInline]
 
 
 admin.site.register(Instrument, InstrumentAdmin)
