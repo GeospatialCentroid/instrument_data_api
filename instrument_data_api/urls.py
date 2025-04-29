@@ -15,9 +15,8 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-from instrument.views import FileFieldFormView
-
+from django.urls import path, include, re_path
+from instrument import views
 
 from rest_framework import routers
 from instrument.views import StationViewSet
@@ -30,5 +29,17 @@ router.register(r'stations', StationViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path("instrument_upload", FileFieldFormView.as_view()),
+    path("instrument_upload", views.FileFieldFormView.as_view()),
+    #
+    #http://localhost:8000/measurement/5/measurements/ozone/?start=2025-04-21%2011:42:01&end=2025-04-28%2011:42:01
+    re_path(r'^measurement/(?P<id>[0-9]+(,[0-9]+)*)/measurements(?:/(?P<measurements>[a-zA-Z]+(,[a-zA-Z]+)*))?/(?P<interval>[0-9]+)/$', views.get_measurements_view, name='measurements'),
+
+    #http://localhost:8000/latest_measurement/5/hour
+    re_path(r'^latest_measurement/(?P<id>[0-9]+(,[0-9]+)*)/(?P<interval>[a-zA-Z]+)/$', views.get_lastest_instrument_measurement_view,
+            name='latest_measurement by id and table'),
+    #http://localhost:8000/latest_measurement/5
+    re_path(r'^latest_measurement/(?P<id>[0-9]+(,[0-9]+)*)?/$', views.get_lastest_instrument_measurement_view,
+            name='latest_measurement by id'),
+    #http://localhost:8000/latest_measurement
+    path("latest_measurement", views.get_lastest_instrument_measurement_view, name='get_last_measurement'),
 ]
