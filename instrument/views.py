@@ -108,7 +108,7 @@ def get_measurements_view(request, id, measurements='', interval="60"):
 
     table = data_folder+"_avg_" + interval
 
-    sql = """Select %s from \"%s\" 
+    sql = """Select %s ,datetime from \"%s\"
         where datetime between '%s' and '%s'
         """% (measurements,table,start,end)
 
