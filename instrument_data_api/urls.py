@@ -22,6 +22,9 @@ from rest_framework import routers
 from instrument.views import StationViewSet
 from django.urls import path, include
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 # Serializers define the API representation.
 router = routers.DefaultRouter()
 router.register(r'stations', StationViewSet)
@@ -42,4 +45,4 @@ urlpatterns = [
             name='latest_measurement by id'),
     #http://localhost:8000/latest_measurement
     path("latest_measurement", views.get_lastest_instrument_measurement_view, name='get_last_measurement'),
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
